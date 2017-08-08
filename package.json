@@ -1,0 +1,21 @@
+{
+  "name": "@timelaps/frame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "share": "npm version patch && git push && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timelaps/frame.git"
+  },
+  "keywords": [],
+  "author": "Michael McLaughlin <michael@gospecless.com> (https://gospecless.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timelaps/frame/issues"
+  },
+  "homepage": "https://github.com/timelaps/frame#readme"
+}
