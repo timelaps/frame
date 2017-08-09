@@ -14,7 +14,7 @@ module.exports = function generator(global) {
             return queue(fn, pointers, global);
         },
         dequeue: function (id) {
-            return dequeue(id, pointers, global);
+            return dequeue(id, pointers);
         },
         cancel: function (id) {
             return cancel(id, global);

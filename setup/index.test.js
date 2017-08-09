@@ -1,2 +1,3 @@
 var b = require('@timelaps/batterie');
-b.describe('');
+var setup = require('.');
+b.expect(setup).toBeFunction();

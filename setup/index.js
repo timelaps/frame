@@ -1,7 +1,9 @@
 var toArray = require('@timelaps/to/array');
 var forEach = require('@timelaps/n/for/each');
 var pointers = require('../pointers');
-module.exports = function setup(global_, pointers_) {
+var continues = require('../continues');
+var dequeue = require('../dequeue');
+module.exports = function setup(pointers_, global_) {
     var g = global_ || global;
     var p = pointers_ || pointers;
     p.gid = p.gid || (function () {
@@ -12,15 +14,21 @@ module.exports = function setup(global_, pointers_) {
 
     function callsTasks() {
         var copy = p.tasks.slice(0);
-        var args = toArray(arguments);
         var context = this;
+        // reset the shared pointers
         p.tasks = [];
-        forEach(copy, function (task) {
-            task.apply(context, args);
-        });
         p.gid = null;
-        if (p.tasks.length) {
-            setup(g, p);
-        }
+        // call all of the tasks from the previous frame
+        forEach(copy, function (task) {
+            var id = task.id;
+            if (continues(id, p)) {
+                p.ids[id] -= 1;
+                task.fn(task);
+                if (!continues(id, p)) {
+                    // naturally ran out of runs
+                    dequeue(id, p);
+                }
+            }
+        });
     }
 };
