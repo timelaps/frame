@@ -2,7 +2,7 @@ var queue = request.queue = require('./queue');
 var dequeue = request.dequeue = require('./dequeue');
 var cancel = request.cancel = require('./cancel');
 var request = request.request = require('./request');
-var shim = request.shim = require('./shim');
+var shim = request.shim = require('@timelaps/polyfill/raf');
 module.exports = function generator(global) {
     shim(global);
     var pointers = {
