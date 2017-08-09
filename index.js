@@ -1,9 +1,11 @@
-var queue = request.queue = require('./queue');
-var dequeue = request.dequeue = require('./dequeue');
-var cancel = request.cancel = require('./cancel');
-var request = request.request = require('./request');
-var shim = request.shim = require('@timelaps/polyfill/raf');
-module.exports = function generator(global) {
+module.exports = generator;
+var queue = generator.queue = require('./queue');
+var dequeue = generator.dequeue = require('./dequeue');
+var cancel = generator.cancel = require('./cancel');
+var request = generator.request = require('./request');
+var shim = generator.shim = require('@timelaps/polyfill/raf');
+
+function generator(global) {
     shim(global);
     var pointers = {
         tasks: [],
@@ -23,4 +25,4 @@ module.exports = function generator(global) {
             return request(fn, null, pointers, global);
         }
     };
-};
+}
