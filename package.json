@@ -19,12 +19,12 @@
   },
   "homepage": "https://github.com/timelaps/frame#readme",
   "devDependencies": {
-    "@timelaps/batterie": "^1.0.70"
+    "@timelaps/batterie": "^1.0.73"
   },
   "dependencies": {
-    "@timelaps/is": "^1.0.8",
-    "@timelaps/n": "^1.0.13",
-    "@timelaps/polyfill": "^1.0.5",
-    "@timelaps/to": "^1.0.4"
+    "@timelaps/is": "^1.0.12",
+    "@timelaps/n": "^1.0.24",
+    "@timelaps/polyfill": "^1.0.8",
+    "@timelaps/to": "^1.0.6"
   }
 }
